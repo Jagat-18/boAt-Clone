@@ -391,14 +391,20 @@ ul{
   height:auto !important;
   flex-wrap: wrap;
 }
-.col-md-5{
-  background-color: #D0D9DE;
+.col-md-5 {
+    background-color: #D0D9DE;
+    display: flex;              /* Add this to make it flexbox */
+    justify-content: center;    /* Center horizontally */
+    align-items: center;        /* Center vertically */
+    height: 250px;              /* Set a fixed box height (adjust as you like) */
+    border-radius: 10px;        /* Optional: Make the box look nice */
+    width: 100%;
 }
 .press-card-title{
   font-size:30px;
   font-weight: 900;
-  margin-top: auto;
-  text-lign:center;
+  margin:0;
+  text-align: center;
 }
 .press-card-title2{
   font-size:50px;
@@ -428,15 +434,14 @@ ul{
   margin-left: 50px;
   margin-top: 20px;
 }
-.press{
- padding-bottom: 60px;
-  margin-bottom: 60px;
+                              /* see this */
+.press {
+  margin: 40px 0;
+  padding-bottom: 60px;
   width: 100%;
-  display: block;
-  clear: both;
-  position: relative;
-  z-index: 1;
+  flex-shrink: 0;
 }
+
 
  .big-deals{
   margin-bottom: auto;
@@ -448,11 +453,11 @@ ul{
    margin-bottom: 90px;
  }
  .lifestyle-section{
-    margin-bottom: auto;
-    margin-top:auto;
+    margin:40px 0;
+    
  }
 .blogs-container{
-  margin-top: auto;
+  margin:40px 0;
 }
  .footer-container{
   width: 100%;
@@ -721,7 +726,7 @@ main{
   }
 }
 @media (max-width: 768px) {
-  .blogs-container,
+  .blogs,
   .press {
     margin-top: 40px;
     margin-bottom: 60px;
@@ -830,4 +835,181 @@ body, html {
 main {
   flex: 1 0 auto;
   display: block;
+}
+/* Full fix for overlapping issue on small screens */
+@media (max-width: 768px) {
+  /* Add space below the blogs section */
+  .blogs {
+    display: block;
+    width: 100%;
+    margin-bottom: 500px;
+    padding-bottom: 500px;
+    clear: both;
+
+  }
+
+  /* Ensure press section is properly spaced */
+  .press {
+    display: block;
+    width: 100%;
+    padding-top: 900px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    clear: both;
+    margin-top:500px;
+  }
+
+  /* Ensure footer has space from the section above */
+  .footer-container {
+    margin-top: 0px;
+    padding-top: 20px;
+    
+    display: block;
+    width: 100%;
+    clear: both;
+  }
+
+  /* Force press section rows to stack on small screens */
+  .press .row {
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .col-md-5,
+  .col-md-7 {
+    width: 100% !important;
+    padding: 10px !important;
+    box-sizing: border-box;
+  }
+
+  .quote {
+    font-size: 36px !important;
+    text-align: center !important;
+  }
+
+  .press-card-title,
+  .press-card-text {
+    text-align: center !important;
+    padding: 10px;
+    font-size: 18px !important;
+  }
+}
+section{
+  display:block;
+  width:100%;
+  clear:both;
+}
+.press,.blogs{
+  flex-shrink: 0;
+  margin:40px 0;
+}
+.clearfix::after{
+  content: "";
+  display:table;
+  clear: both;
+}
+@media (max-width: 768px) {
+  .banner,
+  .carousel,
+  .carousel-inner,
+  .carousel-item,
+  .carousel-item img {
+    height: auto !important;
+    max-height: 250px;
+    object-fit: cover;
+    width: 100%;
+    display:block;
+  }
+
+  .carousel-item img {
+    border-radius: 0 0 10px 10px;
+  }
+}
+.banner{
+  margin-top:70px;
+}
+.press .row{
+  dis
+}
+.press-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center */
+    align-items: center;     /* Horizontally center */
+    height: 100%;           /* Take full height of the parent*/
+    margin: 0 auto;          /* Center the card itself if needed */
+}
+
+.press-card-title {
+    font-size: 30px;
+    font-weight: 900;
+    margin: auto; /* Remove fixed top margin */
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .col-md-5 {
+        height: 200px;  /* Smaller box height for mobile */
+    }
+
+    .press-card-title {
+        font-size: 20px; /* Smaller text size for mobile */
+    }
+}
+/* Make the press row a flexbox */
+.press .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding:0 50px;
+}
+
+/* Left side box (BW BUSINESSWORLD) */
+.col-md-5 {
+    background-color: #D0D9DE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px; /* You can adjust the height */
+    border-radius: 10px;
+    width: 40%; /* Left side width */
+    margin: 0px ; /* No extra margin */
+}
+
+/* Text inside the left box */
+.press-card-title {
+    font-size: 30px;
+    font-weight: 900;
+    margin: 0;
+    text-align: center;
+}
+
+/* Right side content (the quotes and text) */
+.col-md-7 {
+    width: 60%; /* Right side width */
+    padding: 20px;
+}
+@media (max-width: 768px) {
+    .press .row {
+        flex-direction: column; /* Stack vertically */
+    }
+
+    .col-md-5,
+    .col-md-7 {
+        width: 100%; /* Full width on small screens */
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .col-md-5 {
+        height: 200px; /* Smaller box height on small screens */
+    }
+
+    .press-card-title {
+        font-size: 20px; /* Smaller text on small screens */
+    }
 }

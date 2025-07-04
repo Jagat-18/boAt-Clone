@@ -397,7 +397,8 @@ ul{
 .press-card-title{
   font-size:30px;
   font-weight: 900;
-  margin-top: 125px;
+  margin-top: auto;
+  text-lign:center;
 }
 .press-card-title2{
   font-size:50px;
